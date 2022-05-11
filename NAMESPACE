@@ -1,0 +1,8 @@
+useDynLib(aLSEC, .registration=TRUE)
+import(Rcpp)
+import(cluster)
+import(igraph)
+import(rARPACK)
+import(movMF)
+import(mvtnorm)
+exportPattern("^[[:alpha:]]+")
