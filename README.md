@@ -12,9 +12,6 @@ devtools::install_github('hanhtdpham/aLSEC')
 
 ## Example fitting aLSEC model for UK Faculty network
 
-Once aLSEC is installed, we will load other packages needed for the
-analysis and the UK faculty network.
-
 ``` r
 # Preamble ----------------------------------------------------------------
 library(igraph)
@@ -47,6 +44,7 @@ Zhat_uk <- as.numeric(factor(Zhat_uk))
 
 
 # Visualizing results  ----------------------------------------------------
+
 ### Code from igraph package to add vertex shape ###
 # triangle vertex shape
 mytriangle <- function(coords, v=NULL, params) {
