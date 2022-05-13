@@ -7,7 +7,6 @@ Maintainer: Hanh T.D. Pham <hanh-pham@uiowa.edu>
 Description: Functions to perform automated edge clustering on network data
 License: MIT
 Encoding: UTF-8
-LazyData: true
 Imports: Rcpp (>= 1.0.3), cluster, igraph, rARPACK, movMF, mvtnorm
 LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 7.1.2
