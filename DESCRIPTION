@@ -1,11 +1,11 @@
 Package: aLSEC
 Type: Package
-Title: Automated detection of edge clusters via an overfitted mixture prior
+Title: Automated Detection of Edge Clusters via an Overfitted Mixture Prior
 Version: 0.1.0
 Author: Hanh T.D. Pham, Daniel K. Sewell
 Maintainer: Hanh T.D. Pham <hanh-pham@uiowa.edu>
 Description: Functions to perform automated edge clustering on network data
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 Imports: Rcpp (>= 1.0.3), cluster, igraph, rARPACK, movMF, mvtnorm
 LinkingTo: Rcpp, RcppArmadillo
