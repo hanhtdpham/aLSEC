@@ -13,6 +13,7 @@
 #' iteration for U and V
 #' @param QNSteps integer.  Maximum number of quasi-Newton steps during each iteration for W
 #' @param UV_init_sd numeric. SD used to randomly initialize variance of U and V.
+#' @param alpha_init numeric. Initial value of alpha. If NULL then set to be the prior mean (a_a/b_a).
 #' @param a_u, b_u, a_s, b_s, a_v, b_v, a_r, b_r, a_a, b_a numeric.  Hyper-parameters.
 #' @return Object of class 'eClustaLSEC_GEM'.
 #' \itemize{
@@ -28,7 +29,7 @@ eClustaLSEC_GEM = function(A, K=NULL, p=NULL,
                            maxIter=1e3, maxIterVB=100,
                            eps=1e-4, QNSteps=25,
                            CGSteps=25,
-                           UV_init_sd=1,
+                           UV_init_sd=1, alpha_init=NULL,
                            a_u = 1,b_u = 1,a_s=1, b_s=1,
                            a_v = a_u,b_v = b_u,a_r=a_s,b_r=b_s,
                            a_a = 1, b_a = 200){
@@ -100,7 +101,7 @@ eClustaLSEC_GEM = function(A, K=NULL, p=NULL,
 
   W = matrix(rnorm(K*p), K, p)
 
-  alpha = a_a/b_a
+  alpha = ifelse(is.null(alpha_init), a_a/b_a, alpha_init)
 
   oldZ <- rep(1, M)
 
@@ -210,6 +211,7 @@ eClustaLSEC_GEM = function(A, K=NULL, p=NULL,
                               V = V,
                               W = W,
                               Pmk = Pmk,
+                              alphaTld = alphaTld,
                               tauU = tauU,
                               tauV = tauV,
                               tauS = tauS,
