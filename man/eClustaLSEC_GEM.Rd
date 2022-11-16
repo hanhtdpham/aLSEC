@@ -14,6 +14,7 @@ eClustaLSEC_GEM(
   QNSteps = 25,
   CGSteps = 25,
   UV_init_sd = 1,
+  alpha_init = NULL,
   a_u = 1,
   b_u = 1,
   a_s = 1,
@@ -45,6 +46,8 @@ eClustaLSEC_GEM(
 iteration for U and V}
 
 \item{UV_init_sd}{numeric. SD used to randomly initialize variance of U and V.}
+
+\item{alpha_init}{numeric. Initial value of alpha. If NULL then set to be the prior mean (a_a/b_a).}
 
 \item{a_u, }{b_u, a_s, b_s, a_v, b_v, a_r, b_r, a_a, b_a numeric.  Hyper-parameters.}
 }

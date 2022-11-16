@@ -5,6 +5,8 @@
 #' @param n integer. Number of actors in the network
 #' @param M integer. Number of edges in the network
 #' @param conc concentration parameter of the mixtures of von Mises-Fisher distributions to generate U, V
+#' @param UVShape shape parameter of the Gamma distribution to generate the magnitude of U, V
+#' @param UVRate rate parameter of the Gamma distribution to generate the magnitude of U, V
 #'
 #' @import movMF
 #' @import mvtnorm
@@ -13,12 +15,12 @@ eClustaLSEC_Sim = function(p = 2,
                            n = 400,
                            M = round(n * (n-1) * 0.05),
                            conc = c(1.5,2.5,6,25,150,200,
-                                    1.75,5,10,50,150,200)[6*(p-2) + K - 1]){
+                                    1.75,5,10,50,150,200)[6*(p-2) + K - 1],
+                           UVShape=20,
+                           UVRate=4){
 
   library(igraph)
 
-  UVShape=20;UVRate=4
-  tauSR=0.5
   tauSR = 0.5
   Alpha = rep(1/K,K)
 
