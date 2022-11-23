@@ -14,9 +14,9 @@ eClustaLSEC_Sim = function(p = 2,
                            K = 2*p,
                            n = 400,
                            M = round(n * (n-1) * 0.05),
-                           conc = c(1.5,2.5,6,25,150,200,
-                                    1.75,5,10,50,150,200)[6*(p-2) + K - 1],
-                           UVShape=20,
+                           conc = c(1.5,2.5,6,25,15,40,100,
+                                    1.75,5,10,50,10,15,30)[7*(p-2) + K - 1],
+                           UVShape=c(20, 60)[(K>5)+1],
                            UVRate=4){
 
   library(igraph)

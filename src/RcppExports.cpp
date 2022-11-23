@@ -54,8 +54,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // computeELBO
-double computeELBO(const arma::colvec& SS, const arma::colvec& RR, const arma::mat& U, const arma::mat& V, const arma::mat& W, const arma::mat& Pmk, const arma::rowvec& Pk, const arma::rowvec& Elog_pi_k, const arma::rowvec& alphaTld, const double& alpha, const IntegerMatrix& EE);
-RcppExport SEXP _aLSEC_computeELBO(SEXP SSSEXP, SEXP RRSEXP, SEXP USEXP, SEXP VSEXP, SEXP WSEXP, SEXP PmkSEXP, SEXP PkSEXP, SEXP Elog_pi_kSEXP, SEXP alphaTldSEXP, SEXP alphaSEXP, SEXP EESEXP) {
+double computeELBO(const arma::colvec& SS, const arma::colvec& RR, const arma::mat& U, const arma::mat& V, const arma::mat& W, const arma::mat& Pmk, const arma::rowvec& Pk, const double& PmklogPmk, const arma::rowvec& Elog_pi_k, const arma::rowvec& alphaTld, const double& alpha, const IntegerMatrix& EE);
+RcppExport SEXP _aLSEC_computeELBO(SEXP SSSEXP, SEXP RRSEXP, SEXP USEXP, SEXP VSEXP, SEXP WSEXP, SEXP PmkSEXP, SEXP PkSEXP, SEXP PmklogPmkSEXP, SEXP Elog_pi_kSEXP, SEXP alphaTldSEXP, SEXP alphaSEXP, SEXP EESEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -66,11 +66,12 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::mat& >::type W(WSEXP);
     Rcpp::traits::input_parameter< const arma::mat& >::type Pmk(PmkSEXP);
     Rcpp::traits::input_parameter< const arma::rowvec& >::type Pk(PkSEXP);
+    Rcpp::traits::input_parameter< const double& >::type PmklogPmk(PmklogPmkSEXP);
     Rcpp::traits::input_parameter< const arma::rowvec& >::type Elog_pi_k(Elog_pi_kSEXP);
     Rcpp::traits::input_parameter< const arma::rowvec& >::type alphaTld(alphaTldSEXP);
     Rcpp::traits::input_parameter< const double& >::type alpha(alphaSEXP);
     Rcpp::traits::input_parameter< const IntegerMatrix& >::type EE(EESEXP);
-    rcpp_result_gen = Rcpp::wrap(computeELBO(SS, RR, U, V, W, Pmk, Pk, Elog_pi_k, alphaTld, alpha, EE));
+    rcpp_result_gen = Rcpp::wrap(computeELBO(SS, RR, U, V, W, Pmk, Pk, PmklogPmk, Elog_pi_k, alphaTld, alpha, EE));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -203,7 +204,7 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_aLSEC_QUV", (DL_FUNC) &_aLSEC_QUV, 14},
     {"_aLSEC_QW", (DL_FUNC) &_aLSEC_QW, 8},
-    {"_aLSEC_computeELBO", (DL_FUNC) &_aLSEC_computeELBO, 11},
+    {"_aLSEC_computeELBO", (DL_FUNC) &_aLSEC_computeELBO, 12},
     {"_aLSEC_computePmk", (DL_FUNC) &_aLSEC_computePmk, 7},
     {"_aLSEC_dCondLik", (DL_FUNC) &_aLSEC_dCondLik, 12},
     {"_aLSEC_dQUV", (DL_FUNC) &_aLSEC_dQUV, 16},

@@ -9,8 +9,8 @@ QW <- function(SS, RR, U, V, W, Pmk, Pk, EE) {
     .Call(`_aLSEC_QW`, SS, RR, U, V, W, Pmk, Pk, EE)
 }
 
-computeELBO <- function(SS, RR, U, V, W, Pmk, Pk, Elog_pi_k, alphaTld, alpha, EE) {
-    .Call(`_aLSEC_computeELBO`, SS, RR, U, V, W, Pmk, Pk, Elog_pi_k, alphaTld, alpha, EE)
+computeELBO <- function(SS, RR, U, V, W, Pmk, Pk, PmklogPmk, Elog_pi_k, alphaTld, alpha, EE) {
+    .Call(`_aLSEC_computeELBO`, SS, RR, U, V, W, Pmk, Pk, PmklogPmk, Elog_pi_k, alphaTld, alpha, EE)
 }
 
 computePmk <- function(SS, RR, U, V, W, pi_k, EE) {

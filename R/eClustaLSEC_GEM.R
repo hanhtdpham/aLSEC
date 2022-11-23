@@ -119,9 +119,10 @@ eClustaLSEC_GEM = function(A, K=NULL, p=NULL,
     alphaTld = alpha + colSums(Pmk)
     Elog_pi_k = digamma(alphaTld) - digamma(K*alpha + M)
     Pmk = computePmk(S,R,U,V,W,exp(Elog_pi_k),EE)
+    PmklogPmk = sum(Pmk[Pmk!=0]*log(Pmk[Pmk!=0]))
 
     ELBO_Estep = numeric(maxIterVB)
-    ELBO_Estep[1] = computeELBO(S,R,U,V,W,Pmk,colSums(Pmk),
+    ELBO_Estep[1] = computeELBO(S,R,U,V,W,Pmk,colSums(Pmk),PmklogPmk,
                                 Elog_pi_k,alphaTld,alpha,EE)
 
     for(itVB in 2:maxIterVB){
@@ -133,9 +134,10 @@ eClustaLSEC_GEM = function(A, K=NULL, p=NULL,
       Pmk_old = Pmk
       Elog_pi_k = digamma(alphaTld) - digamma(K*alpha + M)
       Pmk = computePmk(S,R,U,V,W,exp(Elog_pi_k),EE)
+      PmklogPmk = sum(Pmk[Pmk!=0]*log(Pmk[Pmk!=0]))
 
       # Check for convergence
-      ELBO_Estep[itVB] = computeELBO(S,R,U,V,W,Pmk,colSums(Pmk),
+      ELBO_Estep[itVB] = computeELBO(S,R,U,V,W,Pmk,colSums(Pmk),PmklogPmk,
                                      Elog_pi_k,alphaTld,alpha,EE)
       if( ((ELBO_Estep[itVB] - ELBO_Estep[itVB-1])/abs(ELBO_Estep[itVB-1]) < eps ) &
           ( ELBO_Estep[itVB] > ELBO_Estep[itVB-1] ) ) break

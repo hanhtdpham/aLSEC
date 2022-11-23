@@ -23,6 +23,7 @@ double computeELBO(const arma::colvec & SS,
                    const arma::mat & W,
                    const arma::mat & Pmk,
                    const arma::rowvec & Pk,
+                   const double & PmklogPmk,
                    const arma::rowvec & Elog_pi_k,
                    const arma::rowvec & alphaTld,
                    const double & alpha,
@@ -50,7 +51,7 @@ double computeELBO(const arma::colvec & SS,
 
   ret +=
     sum((alpha + Pk - alphaTld)%Elog_pi_k) -
-    accu(Pmk%log(Pmk)) + sum(lgamma(alphaTld));
+    PmklogPmk + sum(lgamma(alphaTld));
 
   return ret;
 }
