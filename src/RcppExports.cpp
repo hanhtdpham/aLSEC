@@ -114,6 +114,32 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// dPostUVW
+Rcpp::List dPostUVW(const arma::colvec& SS, const arma::colvec& RR, const arma::mat& U, const arma::mat& V, const arma::mat& W, const IntegerVector& z, const double& tauS, const double& tauR, const double& tauU, const double& tauV, const IntegerMatrix& EE, const arma::colvec& n_k, const IntegerVector& Mi1Index, const IntegerMatrix& Mi1, const IntegerVector& Mi2Index, const IntegerMatrix& Mi2);
+RcppExport SEXP _aLSEC_dPostUVW(SEXP SSSEXP, SEXP RRSEXP, SEXP USEXP, SEXP VSEXP, SEXP WSEXP, SEXP zSEXP, SEXP tauSSEXP, SEXP tauRSEXP, SEXP tauUSEXP, SEXP tauVSEXP, SEXP EESEXP, SEXP n_kSEXP, SEXP Mi1IndexSEXP, SEXP Mi1SEXP, SEXP Mi2IndexSEXP, SEXP Mi2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::colvec& >::type SS(SSSEXP);
+    Rcpp::traits::input_parameter< const arma::colvec& >::type RR(RRSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type U(USEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type V(VSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type W(WSEXP);
+    Rcpp::traits::input_parameter< const IntegerVector& >::type z(zSEXP);
+    Rcpp::traits::input_parameter< const double& >::type tauS(tauSSEXP);
+    Rcpp::traits::input_parameter< const double& >::type tauR(tauRSEXP);
+    Rcpp::traits::input_parameter< const double& >::type tauU(tauUSEXP);
+    Rcpp::traits::input_parameter< const double& >::type tauV(tauVSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type EE(EESEXP);
+    Rcpp::traits::input_parameter< const arma::colvec& >::type n_k(n_kSEXP);
+    Rcpp::traits::input_parameter< const IntegerVector& >::type Mi1Index(Mi1IndexSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type Mi1(Mi1SEXP);
+    Rcpp::traits::input_parameter< const IntegerVector& >::type Mi2Index(Mi2IndexSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type Mi2(Mi2SEXP);
+    rcpp_result_gen = Rcpp::wrap(dPostUVW(SS, RR, U, V, W, z, tauS, tauR, tauU, tauV, EE, n_k, Mi1Index, Mi1, Mi2Index, Mi2));
+    return rcpp_result_gen;
+END_RCPP
+}
 // dQUV
 arma::mat dQUV(const arma::colvec& SS, const arma::colvec& RR, const arma::mat& U, const arma::mat& V, const arma::mat& W, const arma::mat& Pmk, const arma::rowvec& Pk, const arma::mat& Pmki1, const arma::mat& Pmki2, const double& tauS, const double& tauR, const double& tauU, const double& tauV, const IntegerMatrix& EE, const IntegerVector& Mi1Index, const IntegerMatrix& Mi1);
 RcppExport SEXP _aLSEC_dQUV(SEXP SSSEXP, SEXP RRSEXP, SEXP USEXP, SEXP VSEXP, SEXP WSEXP, SEXP PmkSEXP, SEXP PkSEXP, SEXP Pmki1SEXP, SEXP Pmki2SEXP, SEXP tauSSEXP, SEXP tauRSEXP, SEXP tauUSEXP, SEXP tauVSEXP, SEXP EESEXP, SEXP Mi1IndexSEXP, SEXP Mi1SEXP) {
@@ -158,6 +184,23 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// drawZ
+Rcpp::IntegerVector drawZ(const arma::colvec& SS, const arma::colvec& RR, const arma::mat& U, const arma::mat& V, const arma::mat& W, const arma::rowvec& pi, const IntegerMatrix& EE);
+RcppExport SEXP _aLSEC_drawZ(SEXP SSSEXP, SEXP RRSEXP, SEXP USEXP, SEXP VSEXP, SEXP WSEXP, SEXP piSEXP, SEXP EESEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::colvec& >::type SS(SSSEXP);
+    Rcpp::traits::input_parameter< const arma::colvec& >::type RR(RRSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type U(USEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type V(VSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type W(WSEXP);
+    Rcpp::traits::input_parameter< const arma::rowvec& >::type pi(piSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type EE(EESEXP);
+    rcpp_result_gen = Rcpp::wrap(drawZ(SS, RR, U, V, W, pi, EE));
+    return rcpp_result_gen;
+END_RCPP
+}
 // evalConditionalLik
 double evalConditionalLik(const IntegerVector& z, const arma::colvec& SS, const arma::colvec& RR, const arma::mat& U, const arma::mat& V, const arma::mat& W, const IntegerMatrix& EE);
 RcppExport SEXP _aLSEC_evalConditionalLik(SEXP zSEXP, SEXP SSSEXP, SEXP RRSEXP, SEXP USEXP, SEXP VSEXP, SEXP WSEXP, SEXP EESEXP) {
@@ -172,6 +215,64 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::mat& >::type W(WSEXP);
     Rcpp::traits::input_parameter< const IntegerMatrix& >::type EE(EESEXP);
     rcpp_result_gen = Rcpp::wrap(evalConditionalLik(z, SS, RR, U, V, W, EE));
+    return rcpp_result_gen;
+END_RCPP
+}
+// evalConditionalPost
+double evalConditionalPost(const IntegerVector& z, const arma::colvec& SS, const arma::colvec& RR, const arma::mat& U, const arma::mat& V, const arma::mat& W, const double& tauS, const double& tauR, const double& tauU, const double& tauV, const IntegerMatrix& EE, const arma::colvec& n_k, const double& lambda, const double& a_a, const double& b_a);
+RcppExport SEXP _aLSEC_evalConditionalPost(SEXP zSEXP, SEXP SSSEXP, SEXP RRSEXP, SEXP USEXP, SEXP VSEXP, SEXP WSEXP, SEXP tauSSEXP, SEXP tauRSEXP, SEXP tauUSEXP, SEXP tauVSEXP, SEXP EESEXP, SEXP n_kSEXP, SEXP lambdaSEXP, SEXP a_aSEXP, SEXP b_aSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const IntegerVector& >::type z(zSEXP);
+    Rcpp::traits::input_parameter< const arma::colvec& >::type SS(SSSEXP);
+    Rcpp::traits::input_parameter< const arma::colvec& >::type RR(RRSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type U(USEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type V(VSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type W(WSEXP);
+    Rcpp::traits::input_parameter< const double& >::type tauS(tauSSEXP);
+    Rcpp::traits::input_parameter< const double& >::type tauR(tauRSEXP);
+    Rcpp::traits::input_parameter< const double& >::type tauU(tauUSEXP);
+    Rcpp::traits::input_parameter< const double& >::type tauV(tauVSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type EE(EESEXP);
+    Rcpp::traits::input_parameter< const arma::colvec& >::type n_k(n_kSEXP);
+    Rcpp::traits::input_parameter< const double& >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< const double& >::type a_a(a_aSEXP);
+    Rcpp::traits::input_parameter< const double& >::type b_a(b_aSEXP);
+    rcpp_result_gen = Rcpp::wrap(evalConditionalPost(z, SS, RR, U, V, W, tauS, tauR, tauU, tauV, EE, n_k, lambda, a_a, b_a));
+    return rcpp_result_gen;
+END_RCPP
+}
+// evalMargPost
+double evalMargPost(const IntegerVector& z, const arma::colvec& SS, const arma::colvec& RR, const arma::mat& U, const arma::mat& V, const arma::mat& W, const double& tauS, const double& tauR, const double& tauU, const double& tauV, const arma::colvec& n_k, const double& lambda, const IntegerMatrix& EE, const double& a_s, const double& b_s, const double& a_r, const double& b_r, const double& a_u, const double& a_v, const double& b_u, const double& b_v, const double& a_a, const double& b_a);
+RcppExport SEXP _aLSEC_evalMargPost(SEXP zSEXP, SEXP SSSEXP, SEXP RRSEXP, SEXP USEXP, SEXP VSEXP, SEXP WSEXP, SEXP tauSSEXP, SEXP tauRSEXP, SEXP tauUSEXP, SEXP tauVSEXP, SEXP n_kSEXP, SEXP lambdaSEXP, SEXP EESEXP, SEXP a_sSEXP, SEXP b_sSEXP, SEXP a_rSEXP, SEXP b_rSEXP, SEXP a_uSEXP, SEXP a_vSEXP, SEXP b_uSEXP, SEXP b_vSEXP, SEXP a_aSEXP, SEXP b_aSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const IntegerVector& >::type z(zSEXP);
+    Rcpp::traits::input_parameter< const arma::colvec& >::type SS(SSSEXP);
+    Rcpp::traits::input_parameter< const arma::colvec& >::type RR(RRSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type U(USEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type V(VSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type W(WSEXP);
+    Rcpp::traits::input_parameter< const double& >::type tauS(tauSSEXP);
+    Rcpp::traits::input_parameter< const double& >::type tauR(tauRSEXP);
+    Rcpp::traits::input_parameter< const double& >::type tauU(tauUSEXP);
+    Rcpp::traits::input_parameter< const double& >::type tauV(tauVSEXP);
+    Rcpp::traits::input_parameter< const arma::colvec& >::type n_k(n_kSEXP);
+    Rcpp::traits::input_parameter< const double& >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< const IntegerMatrix& >::type EE(EESEXP);
+    Rcpp::traits::input_parameter< const double& >::type a_s(a_sSEXP);
+    Rcpp::traits::input_parameter< const double& >::type b_s(b_sSEXP);
+    Rcpp::traits::input_parameter< const double& >::type a_r(a_rSEXP);
+    Rcpp::traits::input_parameter< const double& >::type b_r(b_rSEXP);
+    Rcpp::traits::input_parameter< const double& >::type a_u(a_uSEXP);
+    Rcpp::traits::input_parameter< const double& >::type a_v(a_vSEXP);
+    Rcpp::traits::input_parameter< const double& >::type b_u(b_uSEXP);
+    Rcpp::traits::input_parameter< const double& >::type b_v(b_vSEXP);
+    Rcpp::traits::input_parameter< const double& >::type a_a(a_aSEXP);
+    Rcpp::traits::input_parameter< const double& >::type b_a(b_aSEXP);
+    rcpp_result_gen = Rcpp::wrap(evalMargPost(z, SS, RR, U, V, W, tauS, tauR, tauU, tauV, n_k, lambda, EE, a_s, b_s, a_r, b_r, a_u, a_v, b_u, b_v, a_a, b_a));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -207,9 +308,13 @@ static const R_CallMethodDef CallEntries[] = {
     {"_aLSEC_computeELBO", (DL_FUNC) &_aLSEC_computeELBO, 12},
     {"_aLSEC_computePmk", (DL_FUNC) &_aLSEC_computePmk, 7},
     {"_aLSEC_dCondLik", (DL_FUNC) &_aLSEC_dCondLik, 12},
+    {"_aLSEC_dPostUVW", (DL_FUNC) &_aLSEC_dPostUVW, 16},
     {"_aLSEC_dQUV", (DL_FUNC) &_aLSEC_dQUV, 16},
     {"_aLSEC_dQW", (DL_FUNC) &_aLSEC_dQW, 8},
+    {"_aLSEC_drawZ", (DL_FUNC) &_aLSEC_drawZ, 7},
     {"_aLSEC_evalConditionalLik", (DL_FUNC) &_aLSEC_evalConditionalLik, 7},
+    {"_aLSEC_evalConditionalPost", (DL_FUNC) &_aLSEC_evalConditionalPost, 15},
+    {"_aLSEC_evalMargPost", (DL_FUNC) &_aLSEC_evalMargPost, 23},
     {"_aLSEC_getPmki", (DL_FUNC) &_aLSEC_getPmki, 3},
     {"_aLSEC_indexEdges", (DL_FUNC) &_aLSEC_indexEdges, 2},
     {NULL, NULL, 0}

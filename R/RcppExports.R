@@ -21,6 +21,10 @@ dCondLik <- function(SS, RR, U, V, W, z, EE, n_k, Mi1Index, Mi1, Mi2Index, Mi2) 
     .Call(`_aLSEC_dCondLik`, SS, RR, U, V, W, z, EE, n_k, Mi1Index, Mi1, Mi2Index, Mi2)
 }
 
+dPostUVW <- function(SS, RR, U, V, W, z, tauS, tauR, tauU, tauV, EE, n_k, Mi1Index, Mi1, Mi2Index, Mi2) {
+    .Call(`_aLSEC_dPostUVW`, SS, RR, U, V, W, z, tauS, tauR, tauU, tauV, EE, n_k, Mi1Index, Mi1, Mi2Index, Mi2)
+}
+
 dQUV <- function(SS, RR, U, V, W, Pmk, Pk, Pmki1, Pmki2, tauS, tauR, tauU, tauV, EE, Mi1Index, Mi1) {
     .Call(`_aLSEC_dQUV`, SS, RR, U, V, W, Pmk, Pk, Pmki1, Pmki2, tauS, tauR, tauU, tauV, EE, Mi1Index, Mi1)
 }
@@ -29,8 +33,20 @@ dQW <- function(SS, RR, U, V, W, Pmk, Pk, EE) {
     .Call(`_aLSEC_dQW`, SS, RR, U, V, W, Pmk, Pk, EE)
 }
 
+drawZ <- function(SS, RR, U, V, W, pi, EE) {
+    .Call(`_aLSEC_drawZ`, SS, RR, U, V, W, pi, EE)
+}
+
 evalConditionalLik <- function(z, SS, RR, U, V, W, EE) {
     .Call(`_aLSEC_evalConditionalLik`, z, SS, RR, U, V, W, EE)
+}
+
+evalConditionalPost <- function(z, SS, RR, U, V, W, tauS, tauR, tauU, tauV, EE, n_k, lambda, a_a, b_a) {
+    .Call(`_aLSEC_evalConditionalPost`, z, SS, RR, U, V, W, tauS, tauR, tauU, tauV, EE, n_k, lambda, a_a, b_a)
+}
+
+evalMargPost <- function(z, SS, RR, U, V, W, tauS, tauR, tauU, tauV, n_k, lambda, EE, a_s, b_s, a_r, b_r, a_u, a_v, b_u, b_v, a_a, b_a) {
+    .Call(`_aLSEC_evalMargPost`, z, SS, RR, U, V, W, tauS, tauR, tauU, tauV, n_k, lambda, EE, a_s, b_s, a_r, b_r, a_u, a_v, b_u, b_v, a_a, b_a)
 }
 
 getPmki <- function(Pmk, Mi1Index, Mi1) {
