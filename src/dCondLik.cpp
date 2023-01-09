@@ -20,30 +20,30 @@ Rcpp::List dCondLik(const arma::colvec & SS,
   int K = W.n_rows;
   int n = U.n_rows;
   int p = U.n_cols;
-  
+
   arma::mat eUiWk = exp(SS*arma::ones(1,K) + U*W.t());
   arma::mat eViWk = exp(RR*arma::ones(1,K) + V*W.t());
   arma::rowvec fuk = sum(eUiWk,0);
   arma::rowvec fvk = sum(eViWk,0);
-  
+
   arma::mat gradUV = arma::zeros(n,2*(p + 1));
   arma::mat gradW = arma::zeros(K,p);
-  
+
   double helper = 0;
   arma::cube Suk_elements = arma::zeros(K,p,n);
   arma::mat Suk = arma::zeros(K,p);
   arma::cube Svk_elements = arma::zeros(K,p,n);
   arma::mat Svk = arma::zeros(K,p);
   arma::colvec s_tilde = arma::zeros(K);
-  
-  
+
+
   for(int m=0;m<M;m++){
     s_tilde(z(m) - 1) = s_tilde(z(m) - 1) +
       1/(fvk(z(m) - 1) - eViWk(EE(m,0) - 1,z(m) - 1));
   }
-  
+
   for(int i=0;i<n;i++){
-    
+
     // (S,U)
     if(Mi1Index(i)>0){
       if(Mi1Index(i) == 1){
@@ -63,7 +63,7 @@ Rcpp::List dCondLik(const arma::colvec & SS,
       gradUV.submat(i,1,i,p) = gradUV.submat(i,1,i,p) -
         helper*W.row(k);
     }
-    
+
     // (R,V)
     if(Mi2Index(i)>0){
       if(Mi2Index(i) == 1){
@@ -76,8 +76,8 @@ Rcpp::List dCondLik(const arma::colvec & SS,
             W.row(z(Mi2(i,j) - 1) - 1);
         }
       }
-    } 
-    
+    }
+
     for(int k=0; k<K; k++){
       helper = 0;
       if(Mi1Index(i)>0){
@@ -93,7 +93,7 @@ Rcpp::List dCondLik(const arma::colvec & SS,
         helper*W.row(k);
     }
   }
-  
+
   // W
   for(int i=0;i<n;i++){
     Suk_elements.slice(i) = eUiWk.row(i).t()*U.row(i);
@@ -103,12 +103,12 @@ Rcpp::List dCondLik(const arma::colvec & SS,
   }
   for(int m=0;m<M;m++){
     gradW.row(z(m) - 1) = gradW.row(z(m) - 1) +
-      U.row(EE(m,0) - 1) + V.row(EE(m,1) - 1) - 
+      U.row(EE(m,0) - 1) + V.row(EE(m,1) - 1) -
       Suk.row(z(m) - 1)/fuk(z(m) - 1) -
       (Svk.row(z(m) - 1) - Svk_elements.slice(EE(m,0) - 1).row(z(m) - 1))/
         (fvk(z(m) - 1) - eViWk(EE(m,0) - 1,z(m) - 1));
   }
-  
+
   return List::create(Named("UV") = gradUV,
                       Named("W") = gradW); //,Named("test") = helper);
 }

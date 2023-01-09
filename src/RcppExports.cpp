@@ -202,19 +202,21 @@ BEGIN_RCPP
 END_RCPP
 }
 // evalConditionalLik
-double evalConditionalLik(const IntegerVector& z, const arma::colvec& SS, const arma::colvec& RR, const arma::mat& U, const arma::mat& V, const arma::mat& W, const IntegerMatrix& EE);
-RcppExport SEXP _aLSEC_evalConditionalLik(SEXP zSEXP, SEXP SSSEXP, SEXP RRSEXP, SEXP USEXP, SEXP VSEXP, SEXP WSEXP, SEXP EESEXP) {
+double evalConditionalLik(const IntegerVector& z, const arma::colvec& n_k, double& lambda, const arma::colvec& SS, const arma::colvec& RR, const arma::mat& U, const arma::mat& V, const arma::mat& W, const IntegerMatrix& EE);
+RcppExport SEXP _aLSEC_evalConditionalLik(SEXP zSEXP, SEXP n_kSEXP, SEXP lambdaSEXP, SEXP SSSEXP, SEXP RRSEXP, SEXP USEXP, SEXP VSEXP, SEXP WSEXP, SEXP EESEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const IntegerVector& >::type z(zSEXP);
+    Rcpp::traits::input_parameter< const arma::colvec& >::type n_k(n_kSEXP);
+    Rcpp::traits::input_parameter< double& >::type lambda(lambdaSEXP);
     Rcpp::traits::input_parameter< const arma::colvec& >::type SS(SSSEXP);
     Rcpp::traits::input_parameter< const arma::colvec& >::type RR(RRSEXP);
     Rcpp::traits::input_parameter< const arma::mat& >::type U(USEXP);
     Rcpp::traits::input_parameter< const arma::mat& >::type V(VSEXP);
     Rcpp::traits::input_parameter< const arma::mat& >::type W(WSEXP);
     Rcpp::traits::input_parameter< const IntegerMatrix& >::type EE(EESEXP);
-    rcpp_result_gen = Rcpp::wrap(evalConditionalLik(z, SS, RR, U, V, W, EE));
+    rcpp_result_gen = Rcpp::wrap(evalConditionalLik(z, n_k, lambda, SS, RR, U, V, W, EE));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -312,7 +314,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_aLSEC_dQUV", (DL_FUNC) &_aLSEC_dQUV, 16},
     {"_aLSEC_dQW", (DL_FUNC) &_aLSEC_dQW, 8},
     {"_aLSEC_drawZ", (DL_FUNC) &_aLSEC_drawZ, 7},
-    {"_aLSEC_evalConditionalLik", (DL_FUNC) &_aLSEC_evalConditionalLik, 7},
+    {"_aLSEC_evalConditionalLik", (DL_FUNC) &_aLSEC_evalConditionalLik, 9},
     {"_aLSEC_evalConditionalPost", (DL_FUNC) &_aLSEC_evalConditionalPost, 15},
     {"_aLSEC_evalMargPost", (DL_FUNC) &_aLSEC_evalMargPost, 23},
     {"_aLSEC_getPmki", (DL_FUNC) &_aLSEC_getPmki, 3},

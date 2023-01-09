@@ -37,8 +37,8 @@ drawZ <- function(SS, RR, U, V, W, pi, EE) {
     .Call(`_aLSEC_drawZ`, SS, RR, U, V, W, pi, EE)
 }
 
-evalConditionalLik <- function(z, SS, RR, U, V, W, EE) {
-    .Call(`_aLSEC_evalConditionalLik`, z, SS, RR, U, V, W, EE)
+evalConditionalLik <- function(z, n_k, lambda, SS, RR, U, V, W, EE) {
+    .Call(`_aLSEC_evalConditionalLik`, z, n_k, lambda, SS, RR, U, V, W, EE)
 }
 
 evalConditionalPost <- function(z, SS, RR, U, V, W, tauS, tauR, tauU, tauV, EE, n_k, lambda, a_a, b_a) {
